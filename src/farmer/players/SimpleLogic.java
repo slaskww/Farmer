@@ -1,5 +1,9 @@
 package farmer.players;
 
+import farmer.game.Board;
+import farmer.game.RollResult;
+import farmer.game.Side;
+
 public class SimpleLogic implements PlayerLogic {
 
 
@@ -7,7 +11,7 @@ public class SimpleLogic implements PlayerLogic {
         return null;
     }
 
-    public rollResult callOut(Side side) {
+    public RollResult callOut(Side side) {
         return null;
     }
 

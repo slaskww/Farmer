@@ -20,75 +20,22 @@ public class GameEngine {
     }
 
     public void startGame() {
-        while (true) {
-            Field field = playerOne.salvo();
-            announcer.announce(PLAYER_SHOOT.event(playerOne, playerTwo));
-            ShootResult shootResult = playerTwo.callOut(field);
-            announceShootResult(shootResult, playerOne, playerTwo);
-            playerOne.use(shootResult, field);
 
-
-            field = playerTwo.salvo();
-            announcer.announce(PLAYER_SHOOT.event(playerTwo, playerOne));
-            shootResult  = playerOne.callOut(field);
-            announceShootResult(shootResult, playerTwo, playerOne);
-            playerTwo.use(shootResult, field);
-
-            if (checkIfFirstPlayerWon()) {
-                gameResult = GameResult.FIRST_PLAYER_WON;
-                announcer.announce(PLAYER_WIN.event(playerOne, playerTwo));
-                return;
-            }
-            else if (checkIfSecondPlayerWon()) {
-                gameResult = GameResult.SECOND_PLAYER_WON;
-                announcer.announce(PLAYER_WIN.event(playerTwo, playerOne));
-                return;
-            }
-            else if(checkIfItsDraw()) {
-                gameResult = GameResult.DRAW;
-                announcer.announce(DRAW.event(playerOne, playerTwo));
-                return;
-            }
-        }
     }
 
-    private void announceShootResult(ShootResult shootResult, Player sourcePlayer, Player targetPlayer) {
-        switch (shootResult) {
-            case MISS:
-                announcer.announce(PLAYER_MISS.event(sourcePlayer, targetPlayer));
-                break;
-            case HIT:
-                announcer.announce(PLAYER_HIT_A_SHIP.event(sourcePlayer, targetPlayer));
-                break;
-            case HIT_AND_SINK:
-                announcer.announce(PLAYER_SANK_A_SHIP.event(sourcePlayer, targetPlayer));
-                break;
-        }
-    }
 
     public GameResult getGameResult() {
         return gameResult;
     }
 
-    private boolean checkIfItsDraw() {
-        return !playerOne.hasMoreShips() && !playerTwo.hasMoreShips();
-    }
-
     private boolean checkIfSecondPlayerWon() {
-        return !playerOne.hasMoreShips() && playerTwo.hasMoreShips();
+        return  playerTwo.hasFourHorses();
     }
 
     private boolean checkIfFirstPlayerWon() {
-        return playerOne.hasMoreShips() && !playerTwo.hasMoreShips();
+        return playerOne.hasFourHorses();
     }
 
-    public Announcer getAnnouncer() {
-        return announcer;
-    }
-
-    public void setAnnouncer(Announcer announcer) {
-        this.announcer = announcer;
-    }
 
 
 }
