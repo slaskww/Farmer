@@ -1,4 +1,7 @@
 package farmer.animals;
 
-public class Predator {
+public class Predator extends Animal {
+    public Predator(String name) {
+        super(name);
+    }
 }
