@@ -3,10 +3,7 @@ package farmer.players;
 import farmer.animals.Animal;
 import farmer.animals.AnimalFactory;
 import farmer.animals.FarmAnimal;
-import farmer.game.Board;
-import farmer.game.BoardBuilder;
-import farmer.game.RollResult;
-import farmer.game.Side;
+import farmer.game.*;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -16,10 +13,13 @@ public class SimpleLogic implements PlayerLogic {
     private Board playerBoard;
     private Random random = new Random();
     private Side resultOfRolling = new Side(AnimalFactory.rabbit(), AnimalFactory.rabbit());
+    private Dice diceWithWolf = DiceWithWolf.prepareDice();
+    private Dice diceWithFox = DiceWithFox.prepareDice();
 
-    public Side rollTheDice() {
+
+    public Side rollTheDice() { //the returned value is an object that represents result of rolling two dices
         return resultOfRolling;
-    } //the returned value is an object Side representing result of rolling a dice twice
+    }
 
     public RollResult callOut(Side side) {
 
