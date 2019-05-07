@@ -1,6 +1,8 @@
 package farmer.players;
 
+import farmer.animals.Animal;
 import farmer.animals.AnimalFactory;
+import farmer.animals.FarmAnimal;
 import farmer.game.Board;
 import farmer.game.BoardBuilder;
 import farmer.game.RollResult;
@@ -20,7 +22,44 @@ public class SimpleLogic implements PlayerLogic {
     } //the returned value is an object Side representing result of rolling a dice twice
 
     public RollResult callOut(Side side) {
-        return null;
+
+        Animal resultOfFirstRolling = side.getResultOfFirtRolling();
+        Animal resultOfSecondRolling = side.getResultOfSecondRolling();
+
+        if (resultOfFirstRolling.getName() == "Wolf" && resultOfSecondRolling.getName() == "Fox"){ //wolf & fox
+            return RollResult.WOLF_AND_FOX_KILLED_ANIMALS;
+        }
+
+        if (resultOfFirstRolling.getName() == "Wolf"  && resultOfSecondRolling.getName() == "Rabbit"){ //wolf & rabbit
+            return RollResult.WOLF_KILLED_ANIMALS_AND_NEW_RABBIT_CAME_TO_THE_WORLD;
+        }
+
+        if (resultOfFirstRolling.getName() == "Wolf" && resultOfSecondRolling.getName() != "Rabbit" ){ //wolf & other farm animal
+            return RollResult.WOLF_KILLED_ANIMALS;
+        }
+
+        if (resultOfFirstRolling.getName() == "Rabbit" && resultOfSecondRolling.getName() == "Fox"){ //rabbit & fox
+            return RollResult.FOX_KILLED_RABBITS;
+        }
+
+        if (resultOfFirstRolling.getName() != "Rabbit" && resultOfSecondRolling.getName() == "Fox"){ //other farm animal  & fox
+            return playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfFirstRolling)
+                    ? RollResult.FOX_KILLED_RABBITS_AND_NEW_ANIMAL_CAME_TO_THE_WORLD : RollResult.FOX_KILLED_RABBITS;
+        }
+
+        if (resultOfFirstRolling.getName() == resultOfSecondRolling.getName()){ //the same species on both dices
+            return RollResult.NEW_ANIMAL_CAME_TO_THE_WORLD;
+        }
+
+        if (playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfFirstRolling) && playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfSecondRolling)){ // farm animal when pen is not empty  & farm animal when pen is not empty
+            return RollResult.NEW_ANIMALS_CAME_TO_THE_WORLD;
+        }
+
+        if (playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfFirstRolling) || playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfSecondRolling)){ // farm animal when one of two pens is not empty
+            return RollResult.NEW_ANIMAL_CAME_TO_THE_WORLD;
+        }
+
+        return RollResult.NO_CHANGES_ON_THE_FARM; //default result
     }
 
 

@@ -20,6 +20,8 @@ public class Board {
 
     }
 
-
+    public boolean  isAnyAnimalInPen(FarmAnimal farmAnimal){
+        return pens[farmAnimal.getIndexOfPen()].getSize() > 0;
+    }
 
 }
