@@ -20,11 +20,24 @@ public class Pen { //  separated part of the farm where each type of animals are
         return size;
     }
 
-    public void setAnimal(FarmAnimal animal) {
-        this.animal = animal;
+    public void addAnimal(int number) {
+
+        if (number < 0){
+            throw new IllegalArgumentException("This value cannot be negative");
+        }
+        this.size += number;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void removeAnimal(int number) {
+
+        if (number >= this.size){
+            throw new IllegalArgumentException("This value exceeds the size of pen");
+        }
+
+        if (number < 0){
+            throw new IllegalArgumentException("This value cannot be negative");
+        }
+
+        this.size -= number;
     }
 }
