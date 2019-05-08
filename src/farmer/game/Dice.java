@@ -22,6 +22,10 @@ public class Dice {
         this.sides.add(animal);
     }
 
+    public List<Animal> getSides() {
+        return sides;
+    }
+
     public boolean isPlacingAvailable(){
         return this.sides.size() != NUMBER_OF_SIDES_ON_THE_DIE;
     }

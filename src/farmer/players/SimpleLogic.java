@@ -18,6 +18,15 @@ public class SimpleLogic implements PlayerLogic {
 
 
     public Side rollTheDice() { //the returned value is an object that represents result of rolling two dices
+
+        int returnedSideNumberForFirstDie = random.nextInt(diceWithFox.NUMBER_OF_SIDES_ON_THE_DIE);
+        int returnedSideNumberForSecondDie = random.nextInt(diceWithFox.NUMBER_OF_SIDES_ON_THE_DIE);
+        Animal firstResultOfRolling = diceWithWolf.getSides().get(returnedSideNumberForFirstDie);
+        Animal secondResultOfRolling = diceWithFox.getSides().get(returnedSideNumberForSecondDie);
+
+        resultOfRolling.setResultOfFirtRolling(firstResultOfRolling);
+        resultOfRolling.setResultOfSecondRolling(secondResultOfRolling);
+
         return resultOfRolling;
     }
 
