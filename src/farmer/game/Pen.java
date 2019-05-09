@@ -40,4 +40,8 @@ public class Pen { //  separated part of the farm where each type of animals are
 
         this.size -= number;
     }
+
+    public void killAnimals(){
+        this.size = 0;
+    }
 }

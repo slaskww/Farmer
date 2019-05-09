@@ -34,6 +34,21 @@ public class SimpleLogic implements PlayerLogic {
     @Override
     public void use(RollResult result, Side side) {
 
+        if (result == RollResult.WOLF_AND_FOX_KILLED_ANIMALS){
+
+            while (playerBoard.penIterator().hasNext()){
+
+                if (!playerBoard.penIterator().next().getAnimal().isResistantToWolves()){
+                    playerBoard.penIterator().next().killAnimals();
+                }
+
+                if (!playerBoard.penIterator().next().getAnimal().isResistantToFoxes()){
+                    playerBoard.penIterator().next().killAnimals();
+                    playerBoard.penIterator().next().addAnimal(1); //one rabbit always survives after foxes attacks
+                }
+            }
+        }
+
 
 
 

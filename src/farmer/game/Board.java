@@ -2,6 +2,8 @@ package farmer.game;
 
 import farmer.animals.FarmAnimal;
 
+import java.util.Iterator;
+
 public class Board {
 
 
@@ -58,6 +60,11 @@ public class Board {
         int animalsXToRemoveAfterSwapping = numberOfAnimalsYAsAResultOfSwapping * conversionRate;
         pens[animal.getIndexOfPen()].removeAnimal(animalsXToRemoveAfterSwapping); //pen X update
         pens[animal.getIndexOfPen() + 1].addAnimal(numberOfAnimalsYAsAResultOfSwapping); //pen Y update
+    }
+
+
+    public Iterator<Pen> penIterator(){ //implements design pattern: Iterator
+        return new PensIterator(this);
     }
 
 }

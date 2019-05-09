@@ -13,7 +13,7 @@ public class FarmAnimal extends Animal {
         this.isresistantToWolves = isresistantToWolves;
     }
 
-    public boolean isIsresistantToWolves() {
+    public boolean isResistantToWolves() {
         return isresistantToWolves;
     }
 
