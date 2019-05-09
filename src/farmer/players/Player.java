@@ -43,7 +43,6 @@ public class Player {
     }
 
     public boolean hasFourHorses() { //bridge
-
-        return false;
+        return board.hasFourHorses();
     }
 }

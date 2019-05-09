@@ -30,6 +30,15 @@ public class SimpleLogic implements PlayerLogic {
         return resultOfRolling;
     }
 
+
+    @Override
+    public void use(RollResult result, Side side) {
+
+
+
+
+    }
+
     public RollResult callOut(Side side) {
 
         Animal resultOfFirstRolling = side.getResultOfFirtRolling();
