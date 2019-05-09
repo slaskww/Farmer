@@ -21,7 +21,10 @@ public class GameEngine {
 
     public void startGame() {
 
+        int counter = 0;
         while(true){
+            counter++;
+            System.out.println("#" + counter);
 
             Side side = playerOne.rollTheDice();
             RollResult rollResult = playerOne.callOut(side);

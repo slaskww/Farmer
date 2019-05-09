@@ -17,10 +17,8 @@ public class FarmerApp {
         GameEngine gameEngine = new GameEngine();
         gameEngine.prepareGame(player1, player2);
         gameEngine.prepareBoards();
-
         gameEngine.startGame();
     }
-
 
 
 }

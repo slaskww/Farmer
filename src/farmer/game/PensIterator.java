@@ -12,6 +12,8 @@ public class PensIterator implements Iterator<Pen> {
     public PensIterator(Board board) {
         this.board = board;
 
+        pens = new ArrayList<>();
+
         for (Pen pen : board.getPens()){
             pens.add(pen);
         }

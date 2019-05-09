@@ -1,15 +1,24 @@
 package farmer.game;
 
+import farmer.animals.AnimalFactory;
 import farmer.animals.FarmAnimal;
 
 import java.util.Iterator;
 
 public class Board {
 
-    private final Pen[] pens = new Pen[SIZE];
+    private final Pen[] pens;
     private static final int SIZE = 5; //rabbit, sheep, pig, cow, horse
 
-    public Board() {}
+    public Board() {
+        this.pens = new Pen[SIZE];
+        pens[0] = new Pen(AnimalFactory.rabbit(), 1);
+        pens[1] = new Pen(AnimalFactory.sheep(), 0);
+        pens[2] = new Pen(AnimalFactory.pig(), 0);
+        pens[3] = new Pen(AnimalFactory.cow(), 0);
+        pens[4] = new Pen(AnimalFactory.horse(), 0);
+
+    }
 
     public Pen[] getPens() {
         return pens;
@@ -20,6 +29,7 @@ public class Board {
     }
 
     public boolean isAnyAnimalInPen(FarmAnimal farmAnimal) {
+
         return pens[farmAnimal.getIndexOfPen()].getSize() > 0;
     }
 
