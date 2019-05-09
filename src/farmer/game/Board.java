@@ -6,12 +6,10 @@ import java.util.Iterator;
 
 public class Board {
 
-    private final Pen[] pens;
+    private final Pen[] pens = new Pen[SIZE];
     private static final int SIZE = 5; //rabbit, sheep, pig, cow, horse
 
-    public Board() {
-        this.pens = new Pen[SIZE];
-    }
+    public Board() {}
 
     public Pen[] getPens() {
         return pens;
@@ -67,12 +65,12 @@ public class Board {
     }
 
 
-    public void breedAnimals(FarmAnimal animal, boolean drawnOnBothDice) {
+    public void breedAnimals(FarmAnimal animal, boolean isDrawnOnBothDice) {
 
-        pens[animal.getIndexOfPen()].breedAnimals(drawnOnBothDice);
+        pens[animal.getIndexOfPen()].breedAnimals(isDrawnOnBothDice);
 
 
-    } //this method multiply species given in the parameter, parameter drawnOnBothDice has 'true' value when the same species was drawn on both dice
+    } //this method multiply species given in the parameter, parameter isDrawnOnBothDice has 'true' value when the same species was drawn on both dice
 
 
 }

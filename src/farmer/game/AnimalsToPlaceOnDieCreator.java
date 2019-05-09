@@ -8,11 +8,11 @@ import java.util.List;
 
 public class AnimalsToPlaceOnDieCreator {
 
-    private static List<Animal> animalsToPlaceOnDie;
+    private static List<Animal> animalsToPlaceOnDie = new ArrayList<>();
 
     public AnimalsToPlaceOnDieCreator() {
 
-        animalsToPlaceOnDie = new ArrayList<Animal>(){};
+      //  animalsToPlaceOnDie = new ArrayList<Animal>(){};
         animalsToPlaceOnDie.add(AnimalFactory.rabbit());
         animalsToPlaceOnDie.add(AnimalFactory.rabbit());
         animalsToPlaceOnDie.add(AnimalFactory.rabbit());

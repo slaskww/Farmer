@@ -3,6 +3,7 @@ package farmer.game;
 import farmer.animals.Animal;
 import farmer.animals.AnimalFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DiceBuilder {

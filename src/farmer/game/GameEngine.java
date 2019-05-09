@@ -21,6 +21,31 @@ public class GameEngine {
 
     public void startGame() {
 
+        while(true){
+
+            Side side = playerOne.rollTheDice();
+            RollResult rollResult = playerOne.callOut(side);
+            playerOne.use(rollResult, side);
+
+            side = playerTwo.rollTheDice();
+            rollResult = playerTwo.callOut(side);
+            playerTwo.use(rollResult, side);
+
+
+            if (checkIfFirstPlayerWon()){
+                gameResult = GameResult.FIRST_PLAYER_WON;
+                System.out.println("player " + playerOne.getName() + " won!");
+            } else if (checkIfSecondPlayerWon()) {
+                gameResult = GameResult.SECOND_PLAYER_WON;
+                System.out.println("player " + playerTwo.getName() + " won!");
+            } else{
+                gameResult = GameResult.NOT_FINISHED_YET;
+                System.out.println("Not finished yet!");
+            }
+
+        }
+
+
     }
 
 

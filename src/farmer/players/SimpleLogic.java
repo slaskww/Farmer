@@ -98,33 +98,34 @@ public class SimpleLogic implements PlayerLogic {
         if (result == RollResult.NO_CHANGES_ON_THE_FARM){}
     }
 
+    @Override
     public RollResult callOut(Side side) {
 
         Animal resultOfFirstRolling = side.getResultOfFirtRolling();
         Animal resultOfSecondRolling = side.getResultOfSecondRolling();
 
-        if (resultOfFirstRolling.getName() == "Wolf" && resultOfSecondRolling.getName() == "Fox") { //wolf & fox
+        if (resultOfFirstRolling.getName().equals("Wolf") && resultOfSecondRolling.getName().equals("Fox")) { //wolf & fox
             return RollResult.WOLF_AND_FOX_KILLED_ANIMALS;
         }
 
-        if (resultOfFirstRolling.getName() == "Wolf" && resultOfSecondRolling.getName() == "Rabbit") { //wolf & rabbit
+        if (resultOfFirstRolling.getName().equals("Wolf") && resultOfSecondRolling.getName().equals("Rabbit")) { //wolf & rabbit
             return RollResult.WOLF_KILLED_ANIMALS_AND_NEW_RABBIT_CAME_TO_THE_WORLD;
         }
 
-        if (resultOfFirstRolling.getName() == "Wolf" && resultOfSecondRolling.getName() != "Rabbit") { //wolf & other farm animal
+        if (resultOfFirstRolling.getName().equals("Wolf") && !resultOfSecondRolling.getName().equals("Rabbit")) { //wolf & other farm animal
             return RollResult.WOLF_KILLED_ANIMALS;
         }
 
-        if (resultOfFirstRolling.getName() == "Rabbit" && resultOfSecondRolling.getName() == "Fox") { //rabbit & fox
+        if (resultOfFirstRolling.getName().equals("Rabbit") && resultOfSecondRolling.getName().equals("Fox")) { //rabbit & fox
             return RollResult.FOX_KILLED_RABBITS;
         }
 
-        if (resultOfFirstRolling.getName() != "Rabbit" && resultOfSecondRolling.getName() == "Fox") { //other farm animal  & fox
+        if (!resultOfFirstRolling.getName().equals("Rabbit") && resultOfSecondRolling.getName().equals("Fox")) { //other farm animal  & fox
             return playerBoard.isAnyAnimalInPen((FarmAnimal) resultOfFirstRolling)
                     ? RollResult.FOX_KILLED_RABBITS_AND_NEW_ANIMAL_CAME_TO_THE_WORLD : RollResult.FOX_KILLED_RABBITS;
         }
 
-        if (resultOfFirstRolling.getName() == resultOfSecondRolling.getName()) { //the same species on both dices
+        if (resultOfFirstRolling.getName().equals(resultOfSecondRolling.getName())) { //the same species on both dices
             return RollResult.NEW_ANIMAL_CAME_TO_THE_WORLD_TWICE;
         }
 
@@ -139,7 +140,7 @@ public class SimpleLogic implements PlayerLogic {
         return RollResult.NO_CHANGES_ON_THE_FARM; //default result
     }
 
-
+    @Override
     public Board prepareBoard() {
         BoardBuilder builder = new BoardBuilder();
 
