@@ -8,7 +8,7 @@ import java.util.List;
 public class Dice {
 
     private List<Animal> sides;
-    public final int NUMBER_OF_SIDES_ON_THE_DIE = 12;
+    public static final int NUMBER_OF_SIDES_ON_THE_DIE = 12;
 
 
     public Dice() {
