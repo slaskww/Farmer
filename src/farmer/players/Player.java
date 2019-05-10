@@ -34,6 +34,10 @@ public class Player {
         return logic.callOut(side);
     }
 
+    public void swapXForYIfPossible(){
+        this.logic.swapXForYIfPossible();
+    }
+
     public void use(RollResult result, Side side) {
         logic.use(result, side);
     }
@@ -41,6 +45,8 @@ public class Player {
     public void prepareBoard() {
         this.board = logic.prepareBoard();
     }
+
+
 
     public boolean hasFourHorses() { //bridge
         return board.hasFourHorses();

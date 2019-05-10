@@ -2,11 +2,12 @@ package farmer.game;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class PensIterator implements Iterator<Pen> {
 
    private Board board;
-   private ArrayList<Pen> pens;
+   private List<Pen> pens;
    private Iterator<Pen> innerIterator;
 
     public PensIterator(Board board) {
@@ -29,7 +30,9 @@ public class PensIterator implements Iterator<Pen> {
 
     @Override
     public Pen next() {
-        return innerIterator.next();
+        Pen pen = innerIterator.next();
+        System.out.println("in hasNext, PensIterator, next animal: " + pen.getAnimal().getName());
+        return pen ;
     }
 }
 

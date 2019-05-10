@@ -25,6 +25,10 @@ public class Pen { //  separated part of the farm where each type of animals are
         return size;
     }
 
+    public boolean isPenEmpty(){
+        return this.size == 0;
+    }
+
     public void addAnimal(int number) {
 
         if (number < 0) {
@@ -35,7 +39,7 @@ public class Pen { //  separated part of the farm where each type of animals are
 
     public void removeAnimal(int number) {
 
-        if (number >= this.size) {
+        if (number > this.size) {
             throw new IllegalArgumentException("This value exceeds the size of pen");
         }
 
@@ -44,6 +48,10 @@ public class Pen { //  separated part of the farm where each type of animals are
         }
 
         this.size -= number;
+
+        if (animal.getName() == "Rabbit" && this.size == 0){
+            this.size = 1;
+        }
     }
 
     public void killAnimals() {
@@ -53,7 +61,7 @@ public class Pen { //  separated part of the farm where each type of animals are
     public void breedAnimals(boolean drawnOnBothDice) {
 
         int currentNumberOfAnimalsInPen = size;
-        int numberOfNewAnimalsInPen = currentNumberOfAnimalsInPen % BREEDING_RATE; //each pair of animals gives birth to one animal
+        int numberOfNewAnimalsInPen = currentNumberOfAnimalsInPen / BREEDING_RATE; //each pair of animals gives birth to one animal
 
         if (drawnOnBothDice) { //Case 1: the same species was drawn on both dice, so we get one extra example of animal for it
             size += numberOfNewAnimalsInPen + BENEFIT_FOR_THE_SAME_RESULT_ON_BOTH_DICE;

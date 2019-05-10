@@ -11,6 +11,7 @@ public class FarmAnimal extends Animal {
         super(name);
         this.isResistantToFoxes = isResistantToFoxes;
         this.isresistantToWolves = isresistantToWolves;
+        this.indexOfPen = indexOfPen;
     }
 
     public boolean isResistantToWolves() {
@@ -22,6 +23,6 @@ public class FarmAnimal extends Animal {
     }
 
     public int getIndexOfPen() {
-        return indexOfPen;
+        return this.indexOfPen;
     }
 }

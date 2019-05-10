@@ -20,6 +20,12 @@ public class Board {
 
     }
 
+
+    public void showPens(){
+        System.out.format("R:%d S:%d P:%d C:%d H:%d",pens[0].getSize(), pens[1].getSize(), pens[2].getSize(), pens[3].getSize(), pens[4].getSize());
+        System.out.println();
+    }
+
     public Pen[] getPens() {
         return pens;
     }
@@ -30,7 +36,7 @@ public class Board {
 
     public boolean isAnyAnimalInPen(FarmAnimal farmAnimal) {
 
-        return pens[farmAnimal.getIndexOfPen()].getSize() > 0;
+        return !pens[farmAnimal.getIndexOfPen()].isPenEmpty();
     }
 
     public boolean hasFourHorses() {
@@ -63,10 +69,16 @@ public class Board {
 
     private void swap(FarmAnimal animal, int conversionRate) {
         int currentNumberOfAnimalsX = pens[animal.getIndexOfPen()].getSize();
-        int numberOfAnimalsYAsAResultOfSwapping = currentNumberOfAnimalsX % conversionRate;
+
+        if (currentNumberOfAnimalsX > 1) {
+        int numberOfAnimalsYAsAResultOfSwapping = currentNumberOfAnimalsX / conversionRate;
         int animalsXToRemoveAfterSwapping = numberOfAnimalsYAsAResultOfSwapping * conversionRate;
-        pens[animal.getIndexOfPen()].removeAnimal(animalsXToRemoveAfterSwapping); //pen X update
-        pens[animal.getIndexOfPen() + 1].addAnimal(numberOfAnimalsYAsAResultOfSwapping); //pen Y update
+            System.out.println("In swap(), Board, animals initially: " + currentNumberOfAnimalsX);
+            System.out.println("In swap(), Board, animals to remove: " + animalsXToRemoveAfterSwapping);
+            System.out.println("In swap(), Board, animals to add: " + numberOfAnimalsYAsAResultOfSwapping);
+            pens[animal.getIndexOfPen()].removeAnimal(animalsXToRemoveAfterSwapping); //pen X update
+            pens[animal.getIndexOfPen() + 1].addAnimal(numberOfAnimalsYAsAResultOfSwapping); //pen Y update
+        }
     }
 
 

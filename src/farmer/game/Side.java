@@ -12,7 +12,7 @@ public class Side {
         this.resultOfSecondRolling = resultOfSecondRolling;
     }
 
-    public Animal getResultOfFirtRolling() {
+    public Animal getResultOfFirstRolling() {
         return resultOfFirtRolling;
     }
 

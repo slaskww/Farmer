@@ -21,26 +21,47 @@ public class GameEngine {
 
     public void startGame() {
 
+        System.out.println("Before start:");
+        playerOne.getBoard().showPens();
+        playerOne.getBoard().showPens();
+        System.out.println();
+
         int counter = 0;
         while(true){
             counter++;
             System.out.println("#" + counter);
-
+            System.out.println("player1:");
             Side side = playerOne.rollTheDice();
             RollResult rollResult = playerOne.callOut(side);
+            System.out.println(rollResult);
             playerOne.use(rollResult, side);
+            System.out.println(side.getResultOfFirstRolling().getName());
+            System.out.println(side.getResultOfSecondRolling().getName());
+            playerOne.getBoard().showPens();
+            playerOne.swapXForYIfPossible();
 
+            System.out.println();
+            System.out.println();
+            System.out.println("player2:");
             side = playerTwo.rollTheDice();
             rollResult = playerTwo.callOut(side);
+            System.out.println(rollResult);
             playerTwo.use(rollResult, side);
+            System.out.println(side.getResultOfFirstRolling().getName());
+            System.out.println(side.getResultOfSecondRolling().getName());
+            playerTwo.getBoard().showPens();
+            playerTwo.swapXForYIfPossible();
+            System.out.println();
 
 
             if (checkIfFirstPlayerWon()){
                 gameResult = GameResult.FIRST_PLAYER_WON;
                 System.out.println("player " + playerOne.getName() + " won!");
+                return;
             } else if (checkIfSecondPlayerWon()) {
                 gameResult = GameResult.SECOND_PLAYER_WON;
                 System.out.println("player " + playerTwo.getName() + " won!");
+                return;
             } else{
                 gameResult = GameResult.NOT_FINISHED_YET;
                 System.out.println("Not finished yet!");
