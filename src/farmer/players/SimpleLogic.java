@@ -27,7 +27,7 @@ public class SimpleLogic implements PlayerLogic {
 
         resultOfRolling.setResultOfFirtRolling(firstResultOfRolling);
         resultOfRolling.setResultOfSecondRolling(secondResultOfRolling);
-        simulateWaiting();
+       // simulateWaiting();
         return resultOfRolling;
     }
 
@@ -45,14 +45,15 @@ public class SimpleLogic implements PlayerLogic {
 
               //  System.out.println("value of hasNext(): " + iterator.hasNext());
              //   System.out.println("value of next(): " + iterator.next().getAnimal().getName());
+                FarmAnimal animal = iterator.next().getAnimal();
 
-                if (!iterator.next().getAnimal().isResistantToWolves()) {
-                    int index = iterator.next().getAnimal().getIndexOfPen();
+                if (!animal.isResistantToWolves()) {
+                    int index = animal.getIndexOfPen();
                     playerBoard.getPens()[index].killAnimals();
                 }
 
-                if (!iterator.next().getAnimal().isResistantToFoxes()) {
-                    int index = iterator.next().getAnimal().getIndexOfPen();
+                if (!animal.isResistantToFoxes()) {
+                    int index = animal.getIndexOfPen();
                     playerBoard.getPens()[index].killAnimals();
                 }
 
@@ -69,8 +70,9 @@ public class SimpleLogic implements PlayerLogic {
            //     System.out.println("value of hasNext(): " + this.playerBoard.penIterator().hasNext());
             //    System.out.println("value of next(): " + this.playerBoard.penIterator().next());
 
-                if (!iterator.next().getAnimal().isResistantToWolves()) {
-                    int index = iterator.next().getAnimal().getIndexOfPen();
+                FarmAnimal animal = iterator.next().getAnimal();
+                if (!animal.isResistantToWolves()) {
+                    int index = animal.getIndexOfPen();
                     playerBoard.getPens()[index].killAnimals();
                 }
 
@@ -87,9 +89,10 @@ public class SimpleLogic implements PlayerLogic {
              //   System.out.println("hasNext()");
             //    System.out.println("value of hasNext(): " + this.playerBoard.penIterator().hasNext());
             //    System.out.println("value of next(): " + iterator.next().getAnimal().getName());
+                FarmAnimal animal = iterator.next().getAnimal();
 
-                if (!iterator.next().getAnimal().isResistantToWolves()) {
-                    int index = iterator.next().getAnimal().getIndexOfPen();
+                if (!animal.isResistantToWolves()) {
+                    int index = animal.getIndexOfPen();
                     playerBoard.getPens()[index].killAnimals();                }
             }
             return;
@@ -137,7 +140,7 @@ public class SimpleLogic implements PlayerLogic {
 
         while(iterator.hasNext()) {
             animal = iterator.next().getAnimal();
-            System.out.println("in swapXForY in SimpleLogic, next animal: " + animal.getName());
+         //   System.out.println("in swapXForY in SimpleLogic, next animal: " + animal.getName());
             playerBoard.swapXForY(animal);
         }
     }

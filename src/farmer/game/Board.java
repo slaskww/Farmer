@@ -73,9 +73,9 @@ public class Board {
         if (currentNumberOfAnimalsX > 1) {
         int numberOfAnimalsYAsAResultOfSwapping = currentNumberOfAnimalsX / conversionRate;
         int animalsXToRemoveAfterSwapping = numberOfAnimalsYAsAResultOfSwapping * conversionRate;
-            System.out.println("In swap(), Board, animals initially: " + currentNumberOfAnimalsX);
-            System.out.println("In swap(), Board, animals to remove: " + animalsXToRemoveAfterSwapping);
-            System.out.println("In swap(), Board, animals to add: " + numberOfAnimalsYAsAResultOfSwapping);
+        //    System.out.println("In swap(), Board, animals initially: " + currentNumberOfAnimalsX);
+        //    System.out.println("In swap(), Board, animals to remove: " + animalsXToRemoveAfterSwapping);
+        //   System.out.println("In swap(), Board, animals to add: " + numberOfAnimalsYAsAResultOfSwapping);
             pens[animal.getIndexOfPen()].removeAnimal(animalsXToRemoveAfterSwapping); //pen X update
             pens[animal.getIndexOfPen() + 1].addAnimal(numberOfAnimalsYAsAResultOfSwapping); //pen Y update
         }

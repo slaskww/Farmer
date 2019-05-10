@@ -31,7 +31,7 @@ public class PensIterator implements Iterator<Pen> {
     @Override
     public Pen next() {
         Pen pen = innerIterator.next();
-        System.out.println("in hasNext, PensIterator, next animal: " + pen.getAnimal().getName());
+      //  System.out.println("in hasNext, PensIterator, next animal: " + pen.getAnimal().getName());
         return pen ;
     }
 }
