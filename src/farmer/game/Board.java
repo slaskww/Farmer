@@ -70,7 +70,7 @@ public class Board {
     private void swap(FarmAnimal animal, int conversionRate) {
         int currentNumberOfAnimalsX = pens[animal.getIndexOfPen()].getSize();
 
-        if (currentNumberOfAnimalsX > 1) {
+        if (currentNumberOfAnimalsX >= conversionRate) {
         int numberOfAnimalsYAsAResultOfSwapping = currentNumberOfAnimalsX / conversionRate;
         int animalsXToRemoveAfterSwapping = numberOfAnimalsYAsAResultOfSwapping * conversionRate;
         //    System.out.println("In swap(), Board, animals initially: " + currentNumberOfAnimalsX);
@@ -78,6 +78,7 @@ public class Board {
         //   System.out.println("In swap(), Board, animals to add: " + numberOfAnimalsYAsAResultOfSwapping);
             pens[animal.getIndexOfPen()].removeAnimal(animalsXToRemoveAfterSwapping); //pen X update
             pens[animal.getIndexOfPen() + 1].addAnimal(numberOfAnimalsYAsAResultOfSwapping); //pen Y update
+            System.out.println(animal.getName() + "(" + animalsXToRemoveAfterSwapping + ") -> " + pens[animal.getIndexOfPen()+1].getAnimal().getName() + "(" + numberOfAnimalsYAsAResultOfSwapping + ")");
         }
     }
 

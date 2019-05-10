@@ -55,6 +55,7 @@ public class Pen { //  separated part of the farm where each type of animals are
     }
 
     public void killAnimals() {
+        System.out.println(this.size + " " + this.animal.getName() + "(s) killed");
         this.size = this.animal.getName() == "Rabbit" ? NUMBER_OF_RABBITS_AFTER_A_FOX_ATTACK : NUMBER_OF_ANIMALS_AFTER_A_WOLF_ATTACK;
     }
 
